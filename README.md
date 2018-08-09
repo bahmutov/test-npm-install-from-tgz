@@ -35,3 +35,30 @@ npm_config_argv: '{"remain":["http://localhost:4500/foo.tgz"],"cooked":["i","htt
 ```
 
 again, the original URL is available from `npm_config_argv` object
+
+## Notes
+
+Better field is to grab "remain" field, this removes all commands and flags, for example
+
+```text
+$ npm i -S http://localhost:4500/foo.tgz
+npm_config_argv: '{"remain":["http://localhost:4500/foo.tgz"],"cooked":["i","--save","http://localhost:4500/foo.tgz"],"original":["i","-S","http://localhost:4500/foo.tgz"]}'
+```
+
+If we have already installed the package, and are just running `npm install` command, then we DO NOT GET the full url in the config.
+
+```text
+$ npm i
+...
+npm_config_argv: '{"remain":[],"cooked":["i"],"original":["i"]}'
+```
+
+Instead we should look at the `package.json` and figure out that the original URL for this package
+
+```
+"dependencies": {
+  "test-npm-install-from-tgz": "http://localhost:4500/foo.tgz"
+}
+```
+
+If the package has been installed already, then the `postinstall` is NOT rerun, so we don't have to do anything.
