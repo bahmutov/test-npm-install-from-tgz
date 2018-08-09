@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "node ./index"
+    "postinstall": "node ./index",
+    "archive": "npm pack; mv test-npm-install-from-tgz-1.0.0.tgz foo.tgz"
   },
   "keywords": [],
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com> (https://glebbahmutov.com/)",
