@@ -1,7 +1,7 @@
 {
   "name": "test-npm-install-from-tgz",
   "version": "1.0.0",
-  "description": "",
+  "description": "Test if NPM postinstall script can access the original TGZ filename from npm i .../foo.tgz",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
